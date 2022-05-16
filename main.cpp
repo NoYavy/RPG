@@ -1,5 +1,7 @@
 #include <iostream>
+/* Select which OS this is compiled on */
 #include <ncurses.h>
+#include <curses.h>	/* Windows */
 #include "main.h"
 using namespace std;
 
@@ -37,7 +39,7 @@ int main() {
 	getmaxyx(stdscr,row,col);
 	int coordx = col/2; /* IMPORTANT */
 	int coordy = row/2;
-	Player pl = Player();
+	Player pl();
 	
 	/* set this to something you'd like */
 	const int user_up = 'w'; 

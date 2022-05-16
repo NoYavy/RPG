@@ -33,7 +33,8 @@ public:
 
 class Room {
 public:
-	int location[3];
+	string walls;
+	//int location[3];
 
 private:
 };
@@ -43,7 +44,7 @@ class Player {
     int location[2];
     char playermiddle;
     public:
-		Player::Player(int location[2]);
+		Player(int location[2]);
 		void moveRight();
 		void moveLeft();
 		void moveDown();
