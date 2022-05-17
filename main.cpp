@@ -1,32 +1,22 @@
+/*
+ * main.h
+ *
+ *  Created on: 19.02.2022
+ *      Author: Noyavy
+ */
 #include <iostream>
 /* Select which OS this is compiled on */
-#include <ncurses.h>
+//#include <ncurses.h>
 #include <curses.h>	/* Windows */
 #include "main.h"
+#include "Player.h"
 using namespace std;
 
 
 void drawRoom() {
 	clear();
-	//const char* roomstr = "___________________________|     |";
-	//mvwprintw(stdscr, 0, 0, roomstr);
 }
-void Player::moveRight() {
-		this->location[0]++;
-		mvwprintw(stdscr, location[1], location[0], ">~>");
-	}
-void Player::moveLeft() {
-		location[0]--;
-		mvwprintw(stdscr, location[1], location[0], "<~<");
-	}
-void Player::moveDown() {
-		location[1]++;
-		mvwprintw(stdscr, location[1], location[0], "v~v");
-	}
-void Player::moveUp() {
-		location[1]--;
-		mvwprintw(stdscr, location[1], location[0], "^~^");
-	}
+
 
 int main() {
 	int ch; 				/* characters typed */
@@ -37,9 +27,8 @@ int main() {
 	curs_set(0);			/* hide cursor */
 	int row, col;
 	getmaxyx(stdscr,row,col);
-	int coordx = col/2; /* IMPORTANT */
-	int coordy = row/2;
-	Player pl();
+	int midcoord[] = {(col/2), (row/2)}; /* IMPORTANT */
+	Player pl(midcoord);
 	
 	/* set this to something you'd like */
 	const int user_up = 'w'; 
@@ -73,10 +62,12 @@ int main() {
 		}
 		drawRoom();
 		/* check borders */
+		/*
 		if (coordx < 0) {coordx = 0;}
 		if (coordx > col-1) {coordx = col-1;}
 		if (coordy < 0) {coordy = 0;}
 		if (coordy > row-1) {coordy = row-1;}
+		*/
 		refresh();
 	}
 	endwin();                       	/* End curses mode */

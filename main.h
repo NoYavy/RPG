@@ -38,18 +38,7 @@ public:
 
 private:
 };
-class Player {
-    list<Item> inventory;
-    int health;
-    int location[2];
-    char playermiddle;
-    public:
-		Player(int location[2]);
-		void moveRight();
-		void moveLeft();
-		void moveDown();
-		void moveUp();
-};
+
 
 class ShipAI {
 
