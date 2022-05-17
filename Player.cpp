@@ -8,7 +8,7 @@
 //#include <ncurses.h>
 #include <curses.h>	/* Windows */
 #include "Player.h"
-Player::Player(int location[2], WINDOW stdscr) {
+Player::Player(int location[2], WINDOW* stdscr) {
 	this->location = location;
 	this->stdscr = stdscr;
 }
@@ -28,6 +28,5 @@ void Player::moveUp(){
 	location[1]--;
 	mvwprintw(stdscr, location[1], location[0], "^~^");
 }
-};
 
 

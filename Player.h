@@ -12,12 +12,12 @@
 #include "main.h"
 
 class Player {
-	WINDOW stdscr;
+	WINDOW* stdscr;
     list<Item> inventory;
     int health = 100;
     int location[2];
     public:
-		Player(int location[2], WINDOW stdscr);
+		Player(int location[2], WINDOW* stdscr);
 		void moveRight();
 		void moveLeft();
 		void moveDown();

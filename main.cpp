@@ -27,8 +27,8 @@ int main() {
 	curs_set(0);			/* hide cursor */
 	int row, col;
 	getmaxyx(stdscr,row,col);
-	int midcoord[] = {(col/2), (row/2)}; /* IMPORTANT */
-	Player pl(midcoord);
+	int midcoord[2] = {(col/2), (row/2)}; /* IMPORTANT */
+	Player pl(midcoord, stdscr);
 	
 	/* set this to something you'd like */
 	const int user_up = 'w'; 
