@@ -4,12 +4,16 @@
  *  Created on: 16.05.2022
  *      Author: Noyavy
  */
+
 /* Select which OS this is compiled on */
 //#include <ncurses.h>
 #include <curses.h>	/* Windows */
 #include "Player.h"
+#include <iostream>
+using namespace std;
+
 Player::Player(int location[2], WINDOW* stdscr) {
-	this->location = location;
+	copy(location, location, this->location);
 	this->stdscr = stdscr;
 }
 void Player::moveRight(){

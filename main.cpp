@@ -4,12 +4,13 @@
  *  Created on: 19.02.2022
  *      Author: Noyavy
  */
-#include <iostream>
+
 /* Select which OS this is compiled on */
 //#include <ncurses.h>
 #include <curses.h>	/* Windows */
 #include "main.h"
 #include "Player.h"
+#include <iostream>
 using namespace std;
 
 
