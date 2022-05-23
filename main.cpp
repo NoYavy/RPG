@@ -6,8 +6,8 @@
  */
 
 /* Select which OS this is compiled on */
-//#include <ncurses.h>
-#include <curses.h>	/* Windows */
+#include <ncurses.h>
+//#include <curses.h>	/* Windows */
 #include "main.h"
 #include "Player.h"
 #include <iostream>
@@ -27,26 +27,29 @@ int main() {
 	keypad(stdscr, TRUE); 	/* Activate additional keys like F1 */
 	curs_set(0);			/* hide cursor */
 	int row, col;
-	getmaxyx(stdscr,row,col);
-	int midcoord[2] = {(col/2), (row/2)}; /* IMPORTANT */
-	Player pl(midcoord, stdscr);
+	getmaxyx(stdscr,row,col); /* IMPORTANT */
+	cout << col << "|" << row << ". ";
+	Player pl((col/2), (row/2), stdscr);
 	
 	/* set this to something you'd like */
+	/*
 	const int user_up = 'w'; 
 	const int user_down = 's';
 	const int user_left = 'a';
 	const int user_right = 'd';
-	/* default
+	*/
+	/* default */
 	const int user_up = KEY_UP; 
 	const int user_down = KEY_DOWN;
 	const int user_left = KEY_LEFT;
 	const int user_right = KEY_RIGHT;
-	*/
 	
-	
-	while((ch = getch()) != KEY_F(1))
-	{	switch(ch)
-		{	case user_left:
+	pl.render((col/2), (row/2));
+	while((ch = getch()) != KEY_F(1)) {	
+		clear();
+		mvwprintw(stdscr, row/2, col/2, "#");
+		switch(ch) {
+			case user_left:
 				pl.moveLeft();
 				break;
 			case user_right:
@@ -61,7 +64,7 @@ int main() {
 			default:
 				continue;
 		}
-		drawRoom();
+		//drawRoom();
 		/* check borders */
 		/*
 		if (coordx < 0) {coordx = 0;}

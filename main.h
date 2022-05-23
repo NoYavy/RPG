@@ -12,7 +12,7 @@
 
 #include <list>
 #include <string>
-using namespace std;
+
 
 
 class Room;
@@ -21,19 +21,19 @@ public:
 
 
 private:
-	list<Room> rooms;
+	std::list<Room> rooms;
 };
 
 class Item {
 public:
-    string name;
+    std::string name;
 
 };
 
 
 class Room {
 public:
-	string walls;
+	std::string walls;
 	//int location[3];
 
 private:

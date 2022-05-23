@@ -8,16 +8,18 @@
 #ifndef PLAYER_H_
 #define PLAYER_H_
 
+#include <ncurses.h>
 #include <list>
 #include "main.h"
 
 class Player {
-	WINDOW* stdscr;
-    list<Item> inventory;
+	_win_st* stdscr;
+    std::list<Item> inventory;
     int health = 100;
     int location[2];
     public:
-		Player(int location[2], WINDOW* stdscr);
+		Player(int locx, int locy, _win_st* stdscr);
+		void render(int x, int y, char pose = '~');
 		void moveRight();
 		void moveLeft();
 		void moveDown();
