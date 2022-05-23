@@ -42,6 +42,7 @@ void Player::moveRight(){
 }
 void Player::moveLeft(){
 	location[0]--;
+	if (location[0] < 1) {location[0] = 1;}
 	render(location[0], location[1], '<');
 }
 void Player::moveDown(){
@@ -50,7 +51,7 @@ void Player::moveDown(){
 }
 void Player::moveUp(){
 	location[1]--;
-	if (this->location[1] < 0) {this->location[1] = 0;}
+	if (location[1] < 0) {location[1] = 0;}
 	render(location[0], location[1], '^');
 }
 
