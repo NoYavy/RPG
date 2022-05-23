@@ -31,13 +31,7 @@ public:
 };
 
 
-class Room {
-public:
-	std::string walls;
-	//int location[3];
 
-private:
-};
 
 
 class ShipAI {

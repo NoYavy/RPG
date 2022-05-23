@@ -39,7 +39,7 @@ int main() {
 	const int user_right = 'd';
 	*/
 	/* default */
-	const int user_up = KEY_UP; 
+	const int user_up = KEY_UP;
 	const int user_down = KEY_DOWN;
 	const int user_left = KEY_LEFT;
 	const int user_right = KEY_RIGHT;
