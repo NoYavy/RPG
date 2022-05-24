@@ -16,8 +16,9 @@ class Player {
 	_win_st* stdscr;
     std::list<Item> inventory;
     int health = 100;
-    int location[2];
     public:
+        int locx;
+		int locy;
 		Player(int locx, int locy, _win_st* stdscr);
 		void render(int x, int y, char pose = '~');
 		void moveRight();

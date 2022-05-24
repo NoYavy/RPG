@@ -5,16 +5,14 @@
  *      Author: Noyavy
  */
 
-/* Select which OS this is compiled on */
 #include <ncurses.h>
-//#include <curses.h>	/* Windows */
 #include "Player.h"
 #include <iostream>
 using namespace std;
 
 Player::Player(int locx, int locy, _win_st* stdscr) {
-	this->location[0] = locx;
-	this->location[1] = locy;
+	this->locx = locx;
+	this->locy = locy;
 	this->stdscr = stdscr;
 }
 void Player::render(int x, int y, char pose) {
@@ -37,22 +35,22 @@ void Player::render(int x, int y, char pose) {
 	}
 }
 void Player::moveRight(){
-	location[0]++;
-	render(location[0], location[1], '>');
+	locx++;
+	render(locx, locy, '>');
 }
 void Player::moveLeft(){
-	location[0]--;
-	if (location[0] < 1) {location[0] = 1;}
-	render(location[0], location[1], '<');
+	locx--;
+	if (locx < 1) {locx = 1;}
+	render(locx, locy, '<');
 }
 void Player::moveDown(){
-	location[1]++;
-	render(location[0], location[1], 'v');
+	locy++;
+	render(locx, locy, 'v');
 }
 void Player::moveUp(){
-	location[1]--;
-	if (location[1] < 0) {location[1] = 0;}
-	render(location[0], location[1], '^');
+	locy--;
+	if (locy < 0) {locy = 0;}
+	render(locx, locy, '^');
 }
 
 

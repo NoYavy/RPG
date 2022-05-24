@@ -5,11 +5,10 @@
  *      Author: Noyavy
  */
 
-/* Select which OS this is compiled on */
 #include <ncurses.h>
-//#include <curses.h>	/* Windows */
 #include "main.h"
 #include "Player.h"
+#include "Room.h"
 #include <iostream>
 using namespace std;
 
@@ -30,6 +29,7 @@ int main() {
 	getmaxyx(stdscr,row,col); /* IMPORTANT */
 	cout << col << "|" << row << ". ";
 	Player pl((col/2), (row/2), stdscr);
+	Room room;
 	
 	/* set this to something you'd like */
 	/*
@@ -48,6 +48,7 @@ int main() {
 	while((ch = getch()) != KEY_F(1)) {	
 		clear();
 		mvwprintw(stdscr, row/2, col/2, "#");
+		cout << pl.locx << "|" << pl.locy << "\n";
 		switch(ch) {
 			case user_left:
 				pl.moveLeft();
