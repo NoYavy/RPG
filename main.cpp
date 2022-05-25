@@ -28,8 +28,8 @@ int main() {
 	int row, col;
 	getmaxyx(stdscr,row,col); /* IMPORTANT */
 	cout << col << "|" << row << ". ";
-	Player pl((col/2), (row/2), stdscr);
 	Room room;
+	Player pl((col/2), (row/2), stdscr, room);
 	
 	/* set this to something you'd like */
 	/*

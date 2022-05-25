@@ -11,15 +11,17 @@
 #include <ncurses.h>
 #include <list>
 #include "main.h"
+#include "Room.h"
 
 class Player {
 	_win_st* stdscr;
     std::list<Item> inventory;
-    int health = 100;
+    int health = 100; 
+	int locx;
+	int locy;
+	Room currroom;
     public:
-        int locx;
-		int locy;
-		Player(int locx, int locy, _win_st* stdscr);
+		Player(int locx, int locy, _win_st* stdscr, Room rm);
 		void render(int x, int y, char pose = '~');
 		void moveRight();
 		void moveLeft();

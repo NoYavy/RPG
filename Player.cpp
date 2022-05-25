@@ -7,13 +7,15 @@
 
 #include <ncurses.h>
 #include "Player.h"
+#include "Room.h"
 #include <iostream>
 using namespace std;
 
-Player::Player(int locx, int locy, _win_st* stdscr) {
+Player::Player(int locx, int locy, _win_st* stdscr, Room rm) {
 	this->locx = locx;
 	this->locy = locy;
 	this->stdscr = stdscr;
+	this->currroom = rm;
 }
 void Player::render(int x, int y, char pose) {
 	switch (pose) {
