@@ -48,7 +48,6 @@ int main() {
 	while((ch = getch()) != KEY_F(1)) {	
 		clear();
 		mvwprintw(stdscr, row/2, col/2, "#");
-		cout << pl.locx << "|" << pl.locy << "\n";
 		switch(ch) {
 			case user_left:
 				pl.moveLeft();
