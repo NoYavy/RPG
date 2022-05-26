@@ -13,7 +13,10 @@
 
 class Room {
 public:
-	std::string walls;
+	int sizex;
+	int sizey;
+	Room();
+	Room(int sizex, int sizey);
 	//int location[3];
 	bool collide(int x, int y);
 };

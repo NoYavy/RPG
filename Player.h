@@ -23,6 +23,7 @@ class Player {
     public:
 		Player(int locx, int locy, _win_st* stdscr, Room rm);
 		void render(int x, int y, char pose = '~');
+		void render(char pose = '~');
 		void moveRight();
 		void moveLeft();
 		void moveDown();

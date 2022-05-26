@@ -27,9 +27,9 @@ int main() {
 	curs_set(0);			/* hide cursor */
 	int row, col;
 	getmaxyx(stdscr,row,col); /* IMPORTANT */
-	cout << col << "|" << row << ". ";
-	Room room;
+	Room room(col-1, row-1);
 	Player pl((col/2), (row/2), stdscr, room);
+	pl.render((col/2), (row/2));
 	
 	/* set this to something you'd like */
 	/*
@@ -44,7 +44,7 @@ int main() {
 	const int user_left = KEY_LEFT;
 	const int user_right = KEY_RIGHT;
 	
-	pl.render((col/2), (row/2));
+	
 	while((ch = getch()) != KEY_F(1)) {	
 		clear();
 		mvwprintw(stdscr, row/2, col/2, "#");
@@ -62,16 +62,10 @@ int main() {
 				pl.moveDown();
 				break;
 			default:
+				pl.render('~');
 				continue;
 		}
 		//drawRoom();
-		/* check borders */
-		/*
-		if (coordx < 0) {coordx = 0;}
-		if (coordx > col-1) {coordx = col-1;}
-		if (coordy < 0) {coordy = 0;}
-		if (coordy > row-1) {coordy = row-1;}
-		*/
 		refresh();
 	}
 	endwin();                       	/* End curses mode */

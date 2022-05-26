@@ -36,22 +36,24 @@ void Player::render(int x, int y, char pose) {
 			break;
 	}
 }
+void Player::render(char pose) {render(locx, locy, pose);}
 void Player::moveRight(){
-	locx++;
+	if (!currroom.collide(locx+2, locy)) {locx++;}
+	
 	render(locx, locy, '>');
 }
 void Player::moveLeft(){
-	locx--;
-	if (locx < 1) {locx = 1;}
+	if (!currroom.collide(locx-2, locy)) {locx--;}
+	
 	render(locx, locy, '<');
 }
 void Player::moveDown(){
-	locy++;
+	if (!currroom.collide(locx, locy+1)) {locy++;}
+	
 	render(locx, locy, 'v');
 }
 void Player::moveUp(){
-	locy--;
-	if (locy < 0) {locy = 0;}
+	if (!currroom.collide(locx, locy-1)) {locy--;}	
 	render(locx, locy, '^');
 }
 
