@@ -16,7 +16,7 @@
 
 
 class Room;
-class Ship {
+class Ship { /* might not be used */
 public:
 
 
