@@ -9,6 +9,7 @@
 #include "main.h"
 #include "Player.h"
 #include "Room.h"
+#include "Interactable.h"
 #include <iostream>
 using namespace std;
 
@@ -44,9 +45,12 @@ int main() {
 	const int user_left = KEY_LEFT;
 	const int user_right = KEY_RIGHT;
 	
+	Interactable blob(15, 20, stdscr);
+	room.addInteractable(blob);
 	
 	while((ch = getch()) != KEY_F(1)) {	
 		clear();
+		blob.render();
 		mvwprintw(stdscr, row/2, col/2, "#");
 		switch(ch) {
 			case user_left:
@@ -60,6 +64,9 @@ int main() {
 				break;
 			case user_down:
 				pl.moveDown();
+				break;
+			case 'e':
+				pl.interact();
 				break;
 			default:
 				pl.render('~');

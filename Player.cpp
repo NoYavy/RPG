@@ -57,4 +57,11 @@ void Player::moveUp(){
 	render(locx, locy, '^');
 }
 
+void Player::interact() {
+		std::pair<Interactable, bool> inter = currroom.getInteractable(locx, locy);
+		if (inter.second) {
+			inter.first.interact(this);
+		}
+}
+
 

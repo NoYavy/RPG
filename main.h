@@ -12,10 +12,10 @@
 
 #include <list>
 #include <string>
+#include "Room.h"
 
 
 
-class Room;
 class Ship {
 public:
 

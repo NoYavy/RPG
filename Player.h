@@ -28,6 +28,9 @@ class Player {
 		void moveLeft();
 		void moveDown();
 		void moveUp();
+		Room getRoom();
+		void addtoInventory(Item item);
+		void interact();
 };
 
 
