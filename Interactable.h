@@ -5,6 +5,9 @@
  *      Author: Noyavy
  */
 
+#ifndef INTERACTABLE_H_
+#define INTERACTABLE_H_
+
 #include "Player.h"
 
 class Interactable {
@@ -19,3 +22,4 @@ class Interactable {
 		void interact(Player pl);
 		void render();
 };
+#endif /* INTERACTABLE_H_ */

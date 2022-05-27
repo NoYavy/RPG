@@ -1,5 +1,5 @@
 /*
- * main.h
+ * main.cpp
  *
  *  Created on: 19.02.2022
  *      Author: Noyavy
