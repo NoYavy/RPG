@@ -11,6 +11,8 @@
 #define ROOM_H_
 
 #include "Interactable.h"
+#include <list>
+#include <utility>
 
 class Room {
 	int sizex;

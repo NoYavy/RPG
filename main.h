@@ -10,33 +10,24 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
-#include <list>
-#include <string>
-#include "Room.h"
+//#include <list>
+//#include <string>
+//#include "Room.h"
 
 
 
-class Ship {
-public:
+//class Ship {
+//public:
 
 
-private:
-	std::list<Room> rooms;
-};
-
-class Item {
-public:
-    std::string name;
-
-};
+//private:
+	//std::list<Room> rooms;
+//};
 
 
+//class ShipAI {
 
-
-
-class ShipAI {
-
-};
+//};
 
 
 #endif /* MAIN_H_ */

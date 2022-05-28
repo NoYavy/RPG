@@ -25,6 +25,6 @@ void Interactable::render() {
 	mvwprintw(stdscr, posy, posx, "0");
 }
 
-void Interactable::interact(Player pl) {
+void Interactable::interact(Player* pl) {
 	
 }
