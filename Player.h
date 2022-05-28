@@ -19,9 +19,9 @@ class Player {
     int health = 100; 
 	int locx;
 	int locy;
-	Room currroom;
+	Room* currroom;
     public:
-		Player(int locx, int locy, _win_st* stdscr, Room rm);
+		Player(int locx, int locy, _win_st* stdscr, Room* rm);
 		void render(int x, int y, char pose = '~');
 		void render(char pose = '~');
 		void moveRight();

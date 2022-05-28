@@ -4,7 +4,10 @@
  *  Created on: 16.05.2022
  *      Author: Noyavy
  */
+
 #include "Room.h"
+#include <iostream>
+
 Room::Room() {}
 Room::Room(int sizex, int sizey) {
 		this->sizex = sizex;

@@ -22,6 +22,9 @@ void drawRoom() {
 int main() {
 	int ch; 				/* characters typed */
 	initscr();				/* Start curses mode */
+	start_color();			/* Start color functionality	*/
+	init_pair(1, COLOR_CYAN, COLOR_BLACK);
+	init_pair(2, COLOR_RED, COLOR_BLACK);
 	cbreak();				/* Line buffering disabled, 
 							   Pass on everything to me */
 	keypad(stdscr, TRUE); 	/* Activate additional keys like F1 */
@@ -29,7 +32,7 @@ int main() {
 	int row, col;
 	getmaxyx(stdscr,row,col); /* IMPORTANT */
 	Room room(col-1, row-1);
-	Player pl((col/2), (row/2), stdscr, room);
+	Player pl((col/2), (row/2), stdscr, &room);
 	pl.render((col/2), (row/2));
 	
 	/* set this to something you'd like */
@@ -46,11 +49,14 @@ int main() {
 	const int user_right = KEY_RIGHT;
 	
 	Interactable blob(15, 20, stdscr);
+	Interactable blob2(10, 20, stdscr);
 	room.addInteractable(blob);
+	room.addInteractable(blob2);
 	
 	while((ch = getch()) != KEY_F(1)) {	
 		clear();
 		blob.render();
+		blob2.render();
 		mvwprintw(stdscr, row/2, col/2, "#");
 		switch(ch) {
 			case user_left:

@@ -26,5 +26,5 @@ void Interactable::render() {
 }
 
 void Interactable::interact(Player* pl) {
-	
+	mvwprintw(stdscr, posy-3, posx, "Found me!");
 }
