@@ -17,7 +17,9 @@ Player::Player(int locx, int locy, _win_st* stdscr, Room* rm) {
 	this->stdscr = stdscr;
 	this->currroom = rm;
 }
+
 void Player::render(int x, int y, char pose) {
+	/* mvprintw doesn't take variables */
 	switch (pose) {
 		case '~':
 			mvwprintw(stdscr, y, x-1, ">~<");
@@ -37,6 +39,7 @@ void Player::render(int x, int y, char pose) {
 	}
 }
 void Player::render(char pose) {render(locx, locy, pose);}
+
 void Player::moveRight(){
 	if (!currroom->collide(locx+2, locy)) {locx++;}
 	

@@ -14,13 +14,13 @@
 #include "Room.h"
 
 class Player {
-	_win_st* stdscr;
-    //std::list<Item> inventory;
-    int health = 100; 
-	int locx;
-	int locy;
-	Room* currroom;
-    public:
+		_win_st* stdscr;
+		//std::list<Item> inventory;
+		int health = 100;
+		int locx;
+		int locy;
+		Room currroom;
+public:
 		Player(int locx, int locy, _win_st* stdscr, Room* rm);
 		void render(int x, int y, char pose = '~');
 		void render(char pose = '~');

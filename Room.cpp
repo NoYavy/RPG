@@ -10,8 +10,8 @@
 
 Room::Room() {}
 Room::Room(int sizex, int sizey) {
-		this->sizex = sizex;
-		this->sizey = sizey;
+	this->sizex = sizex;
+	this->sizey = sizey;
 }
 
 bool Room::collide(int x, int y) {

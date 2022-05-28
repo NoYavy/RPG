@@ -20,6 +20,7 @@
 //public:
 
 
+
 //private:
 	//std::list<Room> rooms;
 //};
