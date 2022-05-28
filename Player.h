@@ -15,19 +15,22 @@
 
 class Player {
 		_win_st* stdscr;
-		std::list<Item> inventory;
+		//std::list<Item> inventory;
 		int health = 100;
 		int locx;
 		int locy;
 		Room currroom;
-    public:
-		Player(int locx, int locy, _win_st* stdscr, Room rm);
+public:
+		Player(int locx, int locy, _win_st* stdscr, Room* rm);
 		void render(int x, int y, char pose = '~');
 		void render(char pose = '~');
 		void moveRight();
 		void moveLeft();
 		void moveDown();
 		void moveUp();
+		Room getRoom();
+		//void addtoInventory(Item item);
+		void interact();
 };
 
 
