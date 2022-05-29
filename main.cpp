@@ -10,12 +10,14 @@
 #include "Player.h"
 #include "Room.h"
 #include "Interactable.h"
+#include "Text.h"
 #include <iostream>
 using namespace std;
 
 
-void drawRoom() {
-	clear();
+void exitpls() {
+	cout << "works";
+	exit(0);
 }
 
 
@@ -44,9 +46,11 @@ int main() {
 	const int user_right = KEY_RIGHT;
 
 	Interactable blob(15, 20, stdscr);
-	Item blob2(10, 20, stdscr);
+  Item blob2(10, 20, stdscr);
+	Text blob3(30, 20, stdscr, "x Hello World", &exitpls);
 	room.addInteractable(&blob);
 	room.addInteractable(&blob2);
+	room.addInteractable(&blob3);
 
 	while((ch = getch()) != KEY_F(1)) {	/* F1 as exit key */
 		clear();

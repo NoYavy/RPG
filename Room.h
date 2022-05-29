@@ -11,6 +11,7 @@
 #define ROOM_H_
 
 #include "Interactable.h"
+#include "Text.h"
 #include "Item.h"
 #include <list>
 #include <utility>
