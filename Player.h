@@ -12,10 +12,11 @@
 #include <list>
 #include "main.h"
 #include "Room.h"
+#include "Item.h"
 
 class Player {
 		_win_st* stdscr;
-		//std::list<Item> inventory;
+		std::list<Item*> inventory;
 		int health = 100;
 		int locx;
 		int locy;
@@ -29,7 +30,8 @@ public:
 		void moveDown();
 		void moveUp();
 		Room getRoom();
-		//void addtoInventory(Item item);
+		void addtoInventory(Item* item);
+		int score;
 		void interact();
 };
 

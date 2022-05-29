@@ -32,3 +32,16 @@ std::pair<Interactable, bool> Room::getInteractable(int x, int y) {
 void Room::addInteractable(Interactable inter) {
 	this->inters.push_back(inter);
 }
+//prevent object slicing
+std::pair<Item, bool> Room::getItem(int x, int y) {
+	for (auto item : items) {
+		if (item.getxPos() == x && item.getyPos() == y) {
+			return std::make_pair(item, true);
+		}
+	}
+	return std::make_pair(Item(), false);
+}
+
+void Room::addItem(Item item) {
+	this->items.push_back(item);
+}
