@@ -27,6 +27,7 @@ public:
 	void addInteractable(Interactable* inter);
 	//int location[3];
 	bool collide(int x, int y);
+	void render();
 };
 
 #endif /* ROOM_H_ */

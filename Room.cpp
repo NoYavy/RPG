@@ -32,3 +32,9 @@ Interactable* Room::getInteractable(int x, int y) {
 void Room::addInteractable(Interactable* inter) {
 	this->inters.push_back(inter);
 }
+
+void Room::render() {
+	for (auto inter : inters) {
+		inter->render();
+	}
+}

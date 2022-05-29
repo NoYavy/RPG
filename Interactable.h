@@ -10,6 +10,7 @@
 
 //#include "Player.h"
 #include <ncurses.h>
+
 class Player;
 class Interactable {
 	protected:
@@ -22,6 +23,7 @@ class Interactable {
 		int getxPos();
 		int getyPos();
 		virtual void interact(Player* pl); // ahhhhhh it had to be virtual
-		void render();
+		virtual void render();
 };
+
 #endif /* INTERACTABLE_H_ */
