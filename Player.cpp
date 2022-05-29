@@ -61,9 +61,9 @@ void Player::moveUp(){
 }
 
 void Player::interact() {
-		std::pair<Interactable, bool> inter = currroom->getInteractable(locx, locy);
-		if (inter.second) {
-			inter.first.interact(this);
+		Interactable* inter = currroom->getInteractable(locx, locy);
+		if (inter) {
+			inter->interact(this);
 			attron(COLOR_PAIR(1));
 		} else {
 			attron(COLOR_PAIR(2));

@@ -14,7 +14,10 @@
 class Item : public Interactable {
 	std::string name;
 	public:
+		Item();
+		Item(int x, int y, _win_st* stdscr);
 		void interact(Player* pl);
+		void render();
 };
 
 #endif /* ITEM_H_ */

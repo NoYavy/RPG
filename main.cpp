@@ -44,9 +44,9 @@ int main() {
 	const int user_right = KEY_RIGHT;
 
 	Interactable blob(15, 20, stdscr);
-	Interactable blob2(10, 20, stdscr);
-	room.addInteractable(blob);
-	room.addInteractable(blob2);
+	Item blob2(10, 20, stdscr);
+	room.addInteractable(&blob);
+	room.addInteractable(&blob2);
 
 	while((ch = getch()) != KEY_F(1)) {	/* F1 as exit key */
 		clear();

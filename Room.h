@@ -18,15 +18,12 @@
 class Room {
 	int sizex;
 	int sizey;
-	std::list<Interactable> inters;
-	std::list<Item> items;
+	std::list<Interactable*> inters;
 public:
 	Room();
 	Room(int sizex, int sizey);
-	std::pair<Interactable, bool> getInteractable(int x, int y);
-	std::pair<Item, bool> getItem(int x, int y);
-	void addInteractable(Interactable inter);
-	void addItem(Item item);
+	Interactable* getInteractable(int x, int y);
+	void addInteractable(Interactable* inter);
 	//int location[3];
 	bool collide(int x, int y);
 };

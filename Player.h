@@ -31,7 +31,7 @@ public:
 		void moveUp();
 		Room getRoom();
 		void addtoInventory(Item* item);
-		int score;
+		int score = 0;
 		void interact();
 };
 
