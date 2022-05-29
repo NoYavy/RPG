@@ -12,6 +12,7 @@
 
 #include "Interactable.h"
 #include "Text.h"
+#include "Item.h"
 #include <list>
 #include <utility>
 
@@ -22,7 +23,7 @@ class Room {
 public:
 	Room();
 	Room(int sizex, int sizey);
-	std::pair<Interactable*, bool> getInteractable(int x, int y);
+	Interactable* getInteractable(int x, int y);
 	void addInteractable(Interactable* inter);
 	//int location[3];
 	bool collide(int x, int y);

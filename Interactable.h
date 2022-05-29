@@ -21,7 +21,7 @@ class Interactable {
 		Interactable(int x, int y, _win_st* stdscr);
 		int getxPos();
 		int getyPos();
-		void interact(Player* pl);
+		virtual void interact(Player* pl); // ahhhhhh it had to be virtual
 		void render();
 };
 #endif /* INTERACTABLE_H_ */

@@ -20,13 +20,13 @@ bool Room::collide(int x, int y) {
 	return false;
 }
 
-std::pair<Interactable*, bool> Room::getInteractable(int x, int y) {
+Interactable* Room::getInteractable(int x, int y) {
 	for (auto inter : inters) {
 		if (inter->getxPos() == x && inter->getyPos() == y) {
-			return std::make_pair(inter, true);
+			return inter;
 		}
 	}
-	return std::make_pair(new Interactable(), false);
+	return NULL;
 }
 
 void Room::addInteractable(Interactable* inter) {

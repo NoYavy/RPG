@@ -12,14 +12,15 @@
 #include <list>
 #include "main.h"
 #include "Room.h"
+#include "Item.h"
 
 class Player {
 		_win_st* stdscr;
-		//std::list<Item> inventory;
+		std::list<Item*> inventory;
 		int health = 100;
 		int locx;
 		int locy;
-		Room currroom;
+		Room* currroom;
 public:
 		Player(int locx, int locy, _win_st* stdscr, Room* rm);
 		void render(int x, int y, char pose = '~');
@@ -29,7 +30,8 @@ public:
 		void moveDown();
 		void moveUp();
 		Room getRoom();
-		//void addtoInventory(Item item);
+		void addtoInventory(Item* item);
+		int score = 0;
 		void interact();
 };
 

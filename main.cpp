@@ -27,29 +27,31 @@ int main() {
 	start_color();			/* Start color functionality	*/
 	init_pair(1, COLOR_CYAN, COLOR_BLACK);
 	init_pair(2, COLOR_RED, COLOR_BLACK);
-	cbreak();				/* Line buffering disabled, 
+	cbreak();				/* Line buffering disabled,
 							 * Pass on everything */
 	keypad(stdscr, TRUE); 	/* Activate additional keys like F1 */
 	curs_set(0);			/* hide cursor */
 	int row, col;
 	getmaxyx(stdscr,row,col); /* Terminal size */
-	
+
 	Room room(col-1, row-1); /* adjust for counting from 1 */
 	Player pl((col/2), (row/2), stdscr, &room);
 	pl.render((col/2), (row/2));
-	
+
 	/* set this to something you'd like
 	 * default: */
 	const int user_up = KEY_UP;
 	const int user_down = KEY_DOWN;
 	const int user_left = KEY_LEFT;
 	const int user_right = KEY_RIGHT;
-	
+
 	Interactable blob(15, 20, stdscr);
-	Text blob2(30, 20, stdscr, "x Hello World", &exitpls);
+  Item blob2(10, 20, stdscr);
+	Text blob3(30, 20, stdscr, "x Hello World", &exitpls);
 	room.addInteractable(&blob);
 	room.addInteractable(&blob2);
-	
+	room.addInteractable(&blob3);
+
 	while((ch = getch()) != KEY_F(1)) {	/* F1 as exit key */
 		clear();
 		blob.render();
@@ -77,6 +79,8 @@ int main() {
 		}
 		refresh();
 	}
+	clear();
+	cout << pl.score;
 	endwin();                       	/* End curses mode */
 	return 0;
 }
