@@ -12,9 +12,10 @@
 #include <ncurses.h>
 class Player;
 class Interactable {
-	int posx;
-	int posy;
-	_win_st* stdscr;
+	protected:
+		int posx;
+		int posy;
+		_win_st* stdscr;
 	public:
 		Interactable();
 		Interactable(int x, int y, _win_st* stdscr);
