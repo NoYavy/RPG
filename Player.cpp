@@ -42,34 +42,39 @@ void Player::render(char pose) {render(locx, locy, pose);}
 
 void Player::moveRight(){
 	if (!currroom->collide(locx+2, locy)) {locx++;}
-	
+
 	render(locx, locy, '>');
 }
 void Player::moveLeft(){
 	if (!currroom->collide(locx-2, locy)) {locx--;}
-	
+
 	render(locx, locy, '<');
 }
 void Player::moveDown(){
 	if (!currroom->collide(locx, locy+1)) {locy++;}
-	
+
 	render(locx, locy, 'v');
 }
 void Player::moveUp(){
-	if (!currroom->collide(locx, locy-1)) {locy--;}	
+	if (!currroom->collide(locx, locy-1)) {locy--;}
 	render(locx, locy, '^');
 }
 
 void Player::interact() {
-		std::pair<Interactable, bool> inter = currroom->getInteractable(locx, locy);	
-		if (inter.second) {
-			inter.first.interact(this);
-			attron(COLOR_PAIR(1));	
+		Interactable* inter = currroom->getInteractable(locx, locy);
+		if (inter) {
+			inter->interact(this);
+			attron(COLOR_PAIR(1));
 		} else {
 			attron(COLOR_PAIR(2));
 		}
 		render();
 		attroff(COLOR_PAIR(1) | COLOR_PAIR(2));
+}
+
+void Player::addtoInventory(Item* item) {
+	this->inventory.push_back(item);
+	this->score += 1;
 }
 
 

@@ -12,15 +12,16 @@
 #include <ncurses.h>
 class Player;
 class Interactable {
-	int posx;
-	int posy;
-	_win_st* stdscr;
+	protected:
+		int posx;
+		int posy;
+		_win_st* stdscr;
 	public:
 		Interactable();
 		Interactable(int x, int y, _win_st* stdscr);
 		int getxPos();
 		int getyPos();
-		void interact(Player* pl);
+		virtual void interact(Player* pl); // ahhhhhh it had to be virtual
 		void render();
 };
 #endif /* INTERACTABLE_H_ */
