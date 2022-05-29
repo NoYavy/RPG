@@ -17,7 +17,6 @@ class Text : public Interactable {
 		Text(int x, int y, _win_st* stdscr, const char* text, void (*func) (void));
 		void render();
 		void interact(Player* pl);
-		char t = 't';
 };
 
 #endif /* TEXT_H_ */

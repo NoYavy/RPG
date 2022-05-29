@@ -15,9 +15,8 @@
 using namespace std;
 
 
-void exitpls() {
-	cout << "works";
-	exit(0);
+void boom() {
+	mvwprintw(stdscr, 20, 20, "O=0");
 }
 
 
@@ -46,8 +45,8 @@ int main() {
 	const int user_right = KEY_RIGHT;
 
 	Interactable blob(15, 20, stdscr);
-  Item blob2(10, 20, stdscr);
-	Text blob3(30, 20, stdscr, "x Hello World", &exitpls);
+	Item blob2(10, 20, stdscr);
+	Text blob3(30, 20, stdscr, "x Hello World", &boom);
 	room.addInteractable(&blob);
 	room.addInteractable(&blob2);
 	room.addInteractable(&blob3);
@@ -56,6 +55,7 @@ int main() {
 		clear();
 		blob.render();
 		blob2.render();
+		blob3.render();
 		mvwprintw(stdscr, row/2, col/2, "#");
 		switch(ch) {
 			case user_left:

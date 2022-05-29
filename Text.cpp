@@ -4,7 +4,7 @@
  *  Created on: 28.05.2022
  *      Author: Noyavy
  */
- 
+
 #include "Text.h"
 #include <iostream>
 Text::Text(int x, int y, _win_st* stdscr, const char* text, void (*func) (void)) {
@@ -20,6 +20,5 @@ void Text::render() {
 }
 
 void Text::interact(Player* pl) {
-	std::cout << "intern";
 	invoke();
 }
