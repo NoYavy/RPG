@@ -16,10 +16,18 @@
 #include <list>
 #include <utility>
 
+struct Wall {
+	int startx;
+	int starty;
+	int endx;
+	int endy;
+};
+
 class Room {
 	int sizex;
 	int sizey;
 	std::list<Interactable*> inters;
+	std::list<Wall> walls;
 public:
 	Room();
 	Room(int sizex, int sizey);
@@ -29,6 +37,7 @@ public:
 	//int location[3];
 	bool collide(int x, int y);
 	void render();
+	void addWall(int startx, int starty, int endx, int endy);
 };
 
 #endif /* ROOM_H_ */
