@@ -35,6 +35,7 @@ public:
 	void addInteractable(Interactable* inter);
 	//int location[3];
 	bool collide(int x, int y);
+	void render();
 	void addWall(int startx, int starty, int endx, int endy);
 };
 

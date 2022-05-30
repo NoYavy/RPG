@@ -45,3 +45,13 @@ void Room::addWall(int startx, int starty, int endx, int endy) {
 	};
 	this->walls.push_back(newwall);
 }
+
+void Room::render() {
+	for (auto wall : walls) {
+		for (int i = wall.startx; i <= wall.endx; i++) {
+			for (int j = wall.starty; j <= wall.endy; j++) {
+				mvprintw(j, i, "#");
+			}
+		}
+	}
+}
