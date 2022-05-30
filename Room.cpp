@@ -17,6 +17,9 @@ Room::Room(int sizex, int sizey) {
 bool Room::collide(int x, int y) {
 	if (x < 0 || y < 0) {return true;}
 	if (x > sizex || y > sizey) {return true;}
+	for (auto wall : walls) {
+		if ((x >= wall.startx && x <= wall.endx) && (y >= wall.starty && y <= wall.endy)) {return true;}
+	}
 	return false;
 }
 
@@ -31,4 +34,14 @@ Interactable* Room::getInteractable(int x, int y) {
 
 void Room::addInteractable(Interactable* inter) {
 	this->inters.push_back(inter);
+}
+
+void Room::addWall(int startx, int starty, int endx, int endy) {
+	Wall newwall = {
+		startx,
+		starty,
+		endx,
+		endy
+	};
+	this->walls.push_back(newwall);
 }

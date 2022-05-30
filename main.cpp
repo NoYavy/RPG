@@ -50,6 +50,7 @@ int main() {
 	room.addInteractable(&blob);
 	room.addInteractable(&blob2);
 	room.addInteractable(&blob3);
+	room.addWall(10, 20, 30, 20);
 
 	while((ch = getch()) != KEY_F(1)) {	/* F1 as exit key */
 		clear();
