@@ -50,12 +50,14 @@ int main() {
 	room.addInteractable(&blob);
 	room.addInteractable(&blob2);
 	room.addInteractable(&blob3);
+	room.addWall(9, 21, 30, 21);
 
 	while((ch = getch()) != KEY_F(1)) {	/* F1 as exit key */
 		clear();
 		blob.render();
 		blob2.render();
 		blob3.render();
+		room.render();
 		mvwprintw(stdscr, row/2, col/2, "#");
 		switch(ch) {
 			case user_left:
