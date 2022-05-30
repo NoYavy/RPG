@@ -19,6 +19,7 @@ Item::Item(int x, int y, _win_st* stdscr) {
 
 void Item::interact(Player* pl) {
 	pl->addtoInventory(this);
+	pl->getRoom()->removeInteractable(this);
 }
 
 void Item::render() {

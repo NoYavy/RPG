@@ -33,6 +33,7 @@ public:
 	Room(int sizex, int sizey);
 	Interactable* getInteractable(int x, int y);
 	void addInteractable(Interactable* inter);
+	void removeInteractable(Interactable* inter);
 	//int location[3];
 	bool collide(int x, int y);
 	void render();

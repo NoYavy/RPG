@@ -36,6 +36,10 @@ void Room::addInteractable(Interactable* inter) {
 	this->inters.push_back(inter);
 }
 
+void Room::removeInteractable(Interactable* inter) {
+	this->inters.remove(inter);
+}
+
 void Room::addWall(int startx, int starty, int endx, int endy) {
 	Wall newwall = {
 		startx,
@@ -47,6 +51,9 @@ void Room::addWall(int startx, int starty, int endx, int endy) {
 }
 
 void Room::render() {
+  for (auto inter : inters) {
+		inter->render();
+  }
 	for (auto wall : walls) {
 		for (int i = wall.startx; i <= wall.endx; i++) {
 			for (int j = wall.starty; j <= wall.endy; j++) {
