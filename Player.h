@@ -29,7 +29,7 @@ public:
 		void moveLeft();
 		void moveDown();
 		void moveUp();
-		Room getRoom();
+		Room* getRoom();
 		void addtoInventory(Item* item);
 		int score = 0;
 		void interact();

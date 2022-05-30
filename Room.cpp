@@ -33,6 +33,10 @@ void Room::addInteractable(Interactable* inter) {
 	this->inters.push_back(inter);
 }
 
+void Room::removeInteractable(Interactable* inter) {
+	this->inters.remove(inter);
+}
+
 void Room::render() {
 	for (auto inter : inters) {
 		inter->render();

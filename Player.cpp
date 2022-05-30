@@ -77,4 +77,8 @@ void Player::addtoInventory(Item* item) {
 	this->score += 1;
 }
 
+Room* Player::getRoom() {
+	return currroom;
+}
+
 

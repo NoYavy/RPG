@@ -11,6 +11,7 @@
 #include "Room.h"
 #include "Interactable.h"
 #include "Text.h"
+#include "Item.h"
 #include <iostream>
 using namespace std;
 
