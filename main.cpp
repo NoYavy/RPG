@@ -20,6 +20,12 @@ void boom() {
 	mvwprintw(stdscr, 20, 20, "O=0");
 }
 
+void quit() {
+	clear();
+	//cout << pl.score;
+	endwin();                       	/* End curses mode */
+	exit(1);
+}
 
 int main() {
 	int ch; 				/* characters typed */
@@ -33,10 +39,12 @@ int main() {
 	curs_set(0);			/* hide cursor */
 	int row, col;
 	getmaxyx(stdscr,row,col); /* Terminal size */
-
-	Room room(col-1, row-1); /* adjust for counting from 1 */
-	Player pl((col/2), (row/2), stdscr, &room);
-	pl.render((col/2), (row/2));
+	int roomx = 100;
+	int roomy = 37;
+	if (col < roomx || row < roomy) {cout << "please resize your window" << row << "|" << col; quit();}
+	Room room(roomx-1, roomy-1); /* adjust for counting from 1 */
+	Player pl((roomx/2), (roomy/2), stdscr, &room);
+	
 
 	/* set this to something you'd like
 	 * default: */
@@ -53,10 +61,12 @@ int main() {
 	room.addInteractable(&blob3);
 	room.addWall(9, 21, 30, 21);
 
+	pl.render();
+	room.render();
 	while((ch = getch()) != KEY_F(1)) {	/* F1 as exit key */
 		clear();
 		room.render();
-		mvwprintw(stdscr, row/2, col/2, "#");
+		mvwprintw(stdscr, roomy/2, roomx/2, "#");
 		switch(ch) {
 			case user_left:
 				pl.moveLeft();
@@ -79,9 +89,7 @@ int main() {
 		}
 		refresh();
 	}
-	clear();
-	cout << pl.score;
-	endwin();                       	/* End curses mode */
+	quit();
 	return 0;
 }
 
