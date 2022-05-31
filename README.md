@@ -9,4 +9,4 @@ This is a simple RPG to get into C++
 ## possible errors and fixes
 | Problem | Solution |
 | --- | --- |
-| ```error opening terminal: xterm-256color``` | ```export TERM=xterm``` |
+| ```error opening terminal: xterm-256color``` | ```export TERMINFO=/lib/terminfo``` <br> ```export TERM=xterm``` |
