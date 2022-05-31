@@ -41,7 +41,7 @@ int main() {
 	getmaxyx(stdscr,row,col); /* Terminal size */
 	int roomx = 100;
 	int roomy = 37;
-	if (col < roomx || row < roomy) {cout << "please resize your window" << row << "|" << col; quit();}
+	if (col < roomx || row < roomy) {cout << "please resize your window to " << roomx << "|" << roomy; quit();}
 	Room room(roomx-1, roomy-1); /* adjust for counting from 1 */
 	Player pl((roomx/2), (roomy/2), stdscr, &room);
 	
@@ -53,20 +53,65 @@ int main() {
 	const int user_left = KEY_LEFT;
 	const int user_right = KEY_RIGHT;
 
-	Interactable blob(15, 20, stdscr);
-	Item blob2(10, 20, stdscr);
-	Text blob3(30, 20, stdscr, "x Hello World", &boom);
-	room.addInteractable(&blob);
-	room.addInteractable(&blob2);
-	room.addInteractable(&blob3);
-	room.addWall(9, 21, 30, 21);
+	room.addInteractable(new Item(50, 36, stdscr));
+	room.addInteractable(new Item(60, 26, stdscr));
+	room.addInteractable(new Item(13, 19, stdscr));
+	room.addInteractable(new Item(75, 16, stdscr));
+	room.addInteractable(new Text(6, 1, stdscr, "x Start game", &quit));
+	room.addInteractable(new Text(6, 3, stdscr, "x Quit game", &quit));
+	
+	// add walls
+	// top left
+	room.addWall(0, 6, 100, 6);
+	room.addWall(47, 17, 47, 20);
+	room.addWall(37, 17, 47, 17);
+	room.addWall(37, 17, 37, 19);
+	room.addWall(37, 19, 43, 19);
+	room.addWall(33, 12, 33, 20);
+	room.addWall(21, 12, 33, 12);
+	room.addWall(21, 10, 33, 10);
+	room.addWall(33, 8, 33, 10);
+	room.addWall(17, 8, 33, 8);
+	room.addWall(17, 8, 17, 14);
+	room.addWall(13, 17, 25, 14);
+	room.addWall(17, 6, 17, 16);
+	room.addWall(17, 18, 17, 20);
+	room.addWall(5, 18, 17, 18);
+	room.addWall(13, 8, 13, 18);
+	room.addWall(9, 6, 9, 16);
+	room.addWall(5, 8, 5, 18);
+	room.addWall(25, 15, 25, 20);
+	// top right
+	room.addWall(53, 8, 53, 20);
+	room.addWall(53, 8, 95, 8);
+	room.addWall(95, 8, 95, 18);
+	room.addWall(58, 13, 90, 13);
+	room.addWall(58, 18, 95, 18);
+	room.addWall(58, 13, 58, 18);
+	// bottom left
+	room.addWall(0, 21, 48, 21);
+	room.addWall(3, 23, 52, 23);
+	room.addWall(0, 25, 46, 25); room.addWall(50, 25, 52, 25);
+	room.addWall(0, 27, 26, 27); room.addWall(30, 27, 48, 27);
+	room.addWall(3, 29, 28, 29); room.addWall(32, 29, 40, 29); room.addWall(44, 29, 48, 29);
+	room.addWall(40, 27, 40, 35);
+	room.addWall(3, 35, 52, 35);
+	room.addWall(3, 29, 3, 33);	room.addWall(0, 33, 3, 33);
+	room.addWall(7, 31, 40, 31);
+	room.addWall(3, 33, 36, 33);
+	room.addWall(46, 29, 46, 33);
+	// bottom right
+	room.addWall(52, 21, 100, 21);
+	room.addWall(52, 22, 52, 22);
+	room.addWall(52, 23, 53, 35);
+	
 
 	pl.render();
 	room.render();
 	while((ch = getch()) != KEY_F(1)) {	/* F1 as exit key */
 		clear();
 		room.render();
-		mvwprintw(stdscr, roomy/2, roomx/2, "#");
+		mvwprintw(stdscr, roomy/2, roomx/2, "+");
 		switch(ch) {
 			case user_left:
 				pl.moveLeft();
