@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+.project
+/Debug/
+.settings/language.settings.xml
+.settings/org.eclipse.cdt.managedbuilder.core.prefs
+.cproject
+/Release/
+*.prefs
