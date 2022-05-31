@@ -40,6 +40,10 @@ void Room::removeInteractable(Interactable* inter) {
 	this->inters.remove(inter);
 }
 
+void Room::clearInteractables() {
+	inters.erase(inters.begin(), inters.end());
+}
+
 void Room::addWall(int startx, int starty, int endx, int endy) {
 	Wall newwall = {
 		startx,

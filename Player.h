@@ -22,6 +22,7 @@ class Player {
 		int locy;
 		Room* currroom;
 public:
+		Player();
 		Player(int locx, int locy, _win_st* stdscr, Room* rm);
 		void render(int x, int y, char pose = '~');
 		void render(char pose = '~');
@@ -31,8 +32,10 @@ public:
 		void moveUp();
 		Room* getRoom();
 		void addtoInventory(Item* item);
+		void clearInventory();
 		int score = 0;
 		void interact();
+		void teleport(int x, int y);
 };
 
 

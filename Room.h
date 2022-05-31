@@ -34,7 +34,7 @@ public:
 	Interactable* getInteractable(int x, int y);
 	void addInteractable(Interactable* inter);
 	void removeInteractable(Interactable* inter);
-	//int location[3];
+	void clearInteractables();
 	bool collide(int x, int y);
 	void render();
 	void addWall(int startx, int starty, int endx, int endy);

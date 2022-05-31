@@ -11,6 +11,7 @@
 #include <iostream>
 using namespace std;
 
+Player::Player() {}
 Player::Player(int locx, int locy, _win_st* stdscr, Room* rm) {
 	this->locx = locx;
 	this->locy = locy;
@@ -77,8 +78,18 @@ void Player::addtoInventory(Item* item) {
 	this->score += 1;
 }
 
+void Player::clearInventory() {
+		inventory.erase(inventory.begin(), inventory.end());
+		score = 0;
+}
+
 Room* Player::getRoom() {
 	return currroom;
 }
 
+void Player::teleport(int x, int y) {
+	locx = x;
+	locy = y;
+	render();
+}
 

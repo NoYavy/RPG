@@ -12,19 +12,42 @@
 #include "Interactable.h"
 #include "Text.h"
 #include "Item.h"
+#include "Portal.h"
 #include <iostream>
 using namespace std;
 
+int roomx;
+int roomy;
+Player pl();
 
-void boom() {
-	mvwprintw(stdscr, 20, 20, "O=0");
+void tutorial() {
+	clear();
+	mvwprintw(stdscr, 15, 10, "Du bist ein Archäologe und musst die Artefakte (X) finden. Hebe sie auf mit \"E\".");
+	mvwprintw(stdscr, 16, 10, "Bewege dich mit \"WASD\" und weiche den Wänden (#) aus, oder nutze die uralte Magie in");
+	mvwprintw(stdscr, 17, 10, "diesem antiken Tempel. Sie bewirkt, dass man in einem bestimmten Winkel durch Wände");
+	mvwprintw(stdscr, 18, 10, "hindurch gehen kann, du solltest das zu deinem Vorteil nutzen! * Benutze \"M\", falls");
+	mvwprintw(stdscr, 19, 10, "du feststeckst, es bringt dich zurück zum Menü. Doch Obacht alle Artefakte kehren");
+	mvwprintw(stdscr, 20, 10, "an ihre ursprüngliche Stelle zurück. Portale (0) kannst du ohne Gefahr nutzen.");
+	mvwprintw(stdscr, 36, 69, "* it's not a bug it's a feature");
 }
 
 void quit() {
 	clear();
-	//cout << pl.score;
 	endwin();                       	/* End curses mode */
 	exit(1);
+}
+
+void initInters(Room* room) {
+	room->clearInteractables();
+	room->addInteractable(new Item(47, 36, stdscr));
+	room->addInteractable(new Item(60, 26, stdscr));
+	room->addInteractable(new Item(13, 19, stdscr));
+	room->addInteractable(new Item(75, 16, stdscr));
+	room->addInteractable(new Text(6, 1, stdscr, "x Instructions", &tutorial));
+	room->addInteractable(new Text(6, 3, stdscr, "x Quit game", &quit));
+	room->addInteractable(new Text(9, 2, stdscr, "<- enter to start", &quit));
+	room->addInteractable(new Portal(7, 2, stdscr, (roomx/2), (roomy/2)));
+	room->addInteractable(new Portal(50, 36, stdscr, (roomx/2), (roomy/2)));
 }
 
 int main() {
@@ -39,30 +62,26 @@ int main() {
 	curs_set(0);			/* hide cursor */
 	int row, col;
 	getmaxyx(stdscr,row,col); /* Terminal size */
-	int roomx = 100;
-	int roomy = 37;
-	if (col < roomx || row < roomy) {cout << "please resize your window to " << roomx << "|" << roomy; quit();}
+	roomx = 100;
+	roomy = 37;
+	if (col < roomx || row < roomy) {cout << "please resize your window to at least " << roomx << " by " << roomy << " as it currently is " << col << " by " << row; quit();}
 	Room room(roomx-1, roomy-1); /* adjust for counting from 1 */
-	Player pl((roomx/2), (roomy/2), stdscr, &room);
+	Player pl(2, 2, stdscr, &room);
 	
 
 	/* set this to something you'd like
 	 * default: */
-	const int user_up = KEY_UP;
-	const int user_down = KEY_DOWN;
-	const int user_left = KEY_LEFT;
-	const int user_right = KEY_RIGHT;
+	const int user_up = 'w';
+	const int user_down = 's';
+	const int user_left = 'a';
+	const int user_right = 'd';
 
-	room.addInteractable(new Item(50, 36, stdscr));
-	room.addInteractable(new Item(60, 26, stdscr));
-	room.addInteractable(new Item(13, 19, stdscr));
-	room.addInteractable(new Item(75, 16, stdscr));
-	room.addInteractable(new Text(6, 1, stdscr, "x Start game", &quit));
-	room.addInteractable(new Text(6, 3, stdscr, "x Quit game", &quit));
+	initInters(&room);
+
 	
 	// add walls
 	// top left
-	room.addWall(0, 6, 100, 6);
+	room.addWall(0, 6, 99, 6);
 	room.addWall(47, 17, 47, 20);
 	room.addWall(37, 17, 47, 17);
 	room.addWall(37, 17, 37, 19);
@@ -101,13 +120,12 @@ int main() {
 	room.addWall(3, 33, 36, 33);
 	room.addWall(46, 29, 46, 33);
 	// bottom right
-	room.addWall(52, 21, 100, 21);
+	room.addWall(52, 21, 99, 21);
 	room.addWall(52, 22, 52, 22);
-	room.addWall(52, 23, 53, 35);
+	room.addWall(52, 23, 53, 36);
 	
 
-	pl.render();
-	room.render();
+	tutorial();
 	while((ch = getch()) != KEY_F(1)) {	/* F1 as exit key */
 		clear();
 		room.render();
@@ -128,9 +146,18 @@ int main() {
 			case 'e':
 				pl.interact();
 				break;
+			case 'm':
+				pl.teleport(2, 2);
+				pl.clearInventory();
+				initInters(&room);
 			default:
 				pl.render('~'); /* prevent player from turning invisible */
 				continue;
+		}
+		if (pl.score == 4) {
+			clear();
+			mvwprintw(stdscr, roomy/2, roomx/2, "You won! Press any key to quit");
+			if (getch()) {quit();}
 		}
 		refresh();
 	}
