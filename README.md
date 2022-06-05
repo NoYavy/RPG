@@ -1,5 +1,5 @@
 # RPG
-This is a simple RPG to get into C++
+This is a simple RPG to get into C++ and Ncurses
 
 ## to install
 1. Follow the instructions [here](https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/intro.html#WHERETOGETIT)
